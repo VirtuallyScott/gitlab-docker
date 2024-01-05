@@ -1,0 +1,15 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - deploy
+
+deploy_to_registry_y:
+  stage: deploy
+  script:
+    - chmod +x ./docker_operations.sh
+    - ./docker_operations.sh
+  only:
+    - master
